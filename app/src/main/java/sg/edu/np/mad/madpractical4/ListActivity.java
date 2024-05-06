@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.helper.widget.Carousel;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -39,10 +40,10 @@ public class ListActivity extends AppCompatActivity {
             userArray.add(user);
         }
 
-        ImageView profileImg = (ImageView) findViewById(R.id.imageView4);
+        //ImageView profileImg = (ImageView) findViewById(R.id.imageView4);
 
-        profileImg.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View V){
+        //profileImg.setOnClickListener(new View.OnClickListener(){
+            /*public void onClick(View V){
                 AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
 
                 builder.setTitle("Profile");
@@ -72,6 +73,6 @@ public class ListActivity extends AppCompatActivity {
 
                 dialog.show();
             }
-        });
+        });*/
     }
 }
