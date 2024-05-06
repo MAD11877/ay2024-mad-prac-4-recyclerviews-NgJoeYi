@@ -13,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class ListActivity extends AppCompatActivity {
@@ -27,6 +28,16 @@ public class ListActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // create 20 random users, descriptions, and value
+        ArrayList<User> userArray = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 1; i <= 20; i++)
+        {
+            Boolean randomFollow = random.nextBoolean();
+            User user = new User("User" + String.valueOf(random.nextInt(100000)),"Description" + String.valueOf(random.nextInt(100000)),i,randomFollow);
+            userArray.add(user);
+        }
 
         ImageView profileImg = (ImageView) findViewById(R.id.imageView4);
 
