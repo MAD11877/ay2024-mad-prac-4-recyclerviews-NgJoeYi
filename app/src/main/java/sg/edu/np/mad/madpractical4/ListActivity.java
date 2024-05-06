@@ -13,6 +13,9 @@ import androidx.constraintlayout.helper.widget.Carousel;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -39,6 +42,15 @@ public class ListActivity extends AppCompatActivity {
             User user = new User("User" + String.valueOf(random.nextInt(100000)),"Description" + String.valueOf(random.nextInt(100000)),i,randomFollow);
             userArray.add(user);
         }
+
+        // (Q3) Recycler View
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        UserAdapter userAdapter = new UserAdapter(userArray);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(userAdapter);
+
 
         //ImageView profileImg = (ImageView) findViewById(R.id.imageView4);
 
