@@ -45,7 +45,7 @@ public class ListActivity extends AppCompatActivity {
 
         // (Q3) Recycler View
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        UserAdapter userAdapter = new UserAdapter(userArray);
+        UserAdapter userAdapter = new UserAdapter(userArray, this);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
