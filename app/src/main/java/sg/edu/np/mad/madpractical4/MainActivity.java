@@ -59,19 +59,19 @@ public class MainActivity extends AppCompatActivity {
 
         //OnClick Event handler
         btnFollow.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-                                             isFollowing = !isFollowing;
-                                             if(isFollowing){
-                                                 btnFollow.setText("Follow");
-                                                 Toast.makeText(getApplicationContext(), "Unfollowed", Toast.LENGTH_SHORT).show();
-                                             }
-                                             else{
-                                                 btnFollow.setText("Unfollow");
-                                                 Toast.makeText(getApplicationContext(), "Followed", Toast.LENGTH_SHORT).show();
-                                             }
-                                         }
-                                     }
+            @Override
+            public void onClick(View v) {
+                isFollowing = !isFollowing;
+                if(isFollowing){
+                    btnFollow.setText("Follow");
+                    Toast.makeText(getApplicationContext(), "Unfollowed", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    btnFollow.setText("Unfollow");
+                    Toast.makeText(getApplicationContext(), "Followed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
 
         );
     }
