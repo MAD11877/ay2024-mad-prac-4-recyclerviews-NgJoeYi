@@ -1,6 +1,5 @@
 package sg.edu.np.mad.madpractical4;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +12,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnFollow;
-    private boolean isFollowing;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,51 +26,39 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        User user = new User("John Doe", "MAD Developer", 1, false);
+        // Initialize a new User object
+        sg.edu.np.mad.madpractical4.User user = new sg.edu.np.mad.madpractical4.User( "MAD", "MAD Developer", 1, false);
 
-        //Get the TextViews and Button from the layout
+        // Get the TextViews and Button from the layout
         TextView tvName = findViewById(R.id.tvName);
         TextView tvDescription = findViewById(R.id.tvDescription);
-        btnFollow = findViewById(R.id.btnFollow);
+        Button btnFollow = findViewById(R.id.btnFollow);
 
-        //Reading the random number
-        Intent receivingEnd = getIntent();
-        String name = receivingEnd.getStringExtra("name");
-        String description = receivingEnd.getStringExtra("description");
-        String followed = receivingEnd.getStringExtra("followed");
-        String id = receivingEnd.getStringExtra("id");
+        // Set the TextViews with the User's name, description and default button message
+        tvName.setText(user.name);
+        tvDescription.setText(user.description);
+        btnFollow.setText("Follow");
 
-        //Set the TextViews with the User's name, description and default button message
-        tvName.setText(name);
-        tvDescription.setText(description);
-
-        if (followed == "true") {
-            btnFollow.setText("Unfollow");
-            //Boolean to check if user is following
-            isFollowing = true;
-        }
-        else{
-            btnFollow.setText("Follow");
-            //Boolean to check if user is following
-            isFollowing = false;
-        }
-
-        //OnClick Event handler
         btnFollow.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-                                             isFollowing = !isFollowing;
-                                             if(isFollowing){
-                                                 btnFollow.setText("Follow");
-                                                 Toast.makeText(getApplicationContext(), "Unfollowed", Toast.LENGTH_SHORT).show();
-                                             }
-                                             else{
-                                                 btnFollow.setText("Unfollow");
-                                                 Toast.makeText(getApplicationContext(), "Followed", Toast.LENGTH_SHORT).show();
-                                             }
-                                         }
-                                     }
+            public void onClick(View v) {
+                if (user.followed){
+                    btnFollow.setText("Unfollow");
+                    user.followed = false;
+                    Toast.makeText(getApplicationContext(), "Followed", Toast.LENGTH_SHORT).show();
+                } else {
+                    btnFollow.setText("Follow");
+                    user.followed = true;
+                    Toast.makeText(getApplicationContext(), "Unfollowed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
-        );
+        String userName = getIntent().getStringExtra("name");
+        String description = getIntent().getStringExtra("description");
+        Integer randomNumber = getIntent().getIntExtra("randomNumber", 0);
+        String name = userName + " " + randomNumber;
+
+        tvName.setText(name);
+        tvDescription.setText(description + " " + randomNumber);
     }
 }
